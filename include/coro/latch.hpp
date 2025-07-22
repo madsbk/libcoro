@@ -40,7 +40,7 @@ public:
     /**
      * @return The number of tasks this latch is still waiting to complete.
      */
-    auto remaining() const noexcept -> std::size_t { return m_count.load(std::memory_order::acquire); }
+    auto remaining() const noexcept -> std::int64_t { return m_count.load(std::memory_order::acquire); }
 
     /**
      * If the latch counter goes to zero then the task awaiting the latch is resumed.

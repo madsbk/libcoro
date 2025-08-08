@@ -219,7 +219,7 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES "GNU")
         message(FATAL_ERROR "g++ version ${CMAKE_CXX_COMPILER_VERSION} is unsupported, please upgrade to at least 10.2.0")
     endif()
 
-    target_compile_options(${PROJECT_NAME} PUBLIC
+    target_compile_options(${PROJECT_NAME} PRIVATE
         $<$<COMPILE_LANGUAGE:CXX>:-fcoroutines>
         $<$<COMPILE_LANGUAGE:CXX>:-fconcepts>
         $<$<COMPILE_LANGUAGE:CXX>:-fexceptions>
@@ -232,14 +232,14 @@ elseif(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
         message(FATAL_ERROR "Clang version ${CMAKE_CXX_COMPILER_VERSION} is unsupported, please upgrade to at least 16.0.0")
     endif()
 
-    target_compile_options(${PROJECT_NAME} PUBLIC
+    target_compile_options(${PROJECT_NAME} PRIVATE
         $<$<COMPILE_LANGUAGE:CXX>:-fexceptions>
         $<$<COMPILE_LANGUAGE:CXX>:-Wall>
         $<$<COMPILE_LANGUAGE:CXX>:-Wextra>
         $<$<COMPILE_LANGUAGE:CXX>:-pipe>
     )
 elseif(MSVC)
-    target_compile_options(${PROJECT_NAME} PUBLIC
+    target_compile_options(${PROJECT_NAME} PRIVATE
         /W4
     )
 endif()
